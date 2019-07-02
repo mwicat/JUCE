@@ -107,6 +107,8 @@ public:
     /** The number of outputs. */
     int numOutputChannels;
 
+    int initialDelay;
+
     /** True if the plug-in is part of a multi-type container, e.g. a VST Shell. */
     bool hasSharedContainer;
 

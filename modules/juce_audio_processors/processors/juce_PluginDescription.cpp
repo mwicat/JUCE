@@ -32,7 +32,8 @@ PluginDescription::PluginDescription()
       isInstrument (false),
       numInputChannels (0),
       numOutputChannels (0),
-      hasSharedContainer (false)
+      hasSharedContainer (false),
+      initialDelay (0)
 {
 }
 
@@ -54,7 +55,8 @@ PluginDescription::PluginDescription (const PluginDescription& other)
       isInstrument (other.isInstrument),
       numInputChannels (other.numInputChannels),
       numOutputChannels (other.numOutputChannels),
-      hasSharedContainer (other.hasSharedContainer)
+      hasSharedContainer (other.hasSharedContainer),
+      initialDelay (other.initialDelay)
 {
 }
 
@@ -74,6 +76,7 @@ PluginDescription& PluginDescription::operator= (const PluginDescription& other)
     numInputChannels = other.numInputChannels;
     numOutputChannels = other.numOutputChannels;
     hasSharedContainer = other.hasSharedContainer;
+    initialDelay = other.initialDelay;
 
     return *this;
 }
@@ -119,6 +122,7 @@ XmlElement* PluginDescription::createXml() const
     e->setAttribute ("numInputs", numInputChannels);
     e->setAttribute ("numOutputs", numOutputChannels);
     e->setAttribute ("isShell", hasSharedContainer);
+    e->setAttribute ("initialDelay", initialDelay);
 
     return e;
 }
@@ -141,6 +145,7 @@ bool PluginDescription::loadFromXml (const XmlElement& xml)
         numInputChannels    = xml.getIntAttribute ("numInputs");
         numOutputChannels   = xml.getIntAttribute ("numOutputs");
         hasSharedContainer  = xml.getBoolAttribute ("isShell", false);
+        initialDelay        = xml.getBoolAttribute ("initialDelay", 0);
 
         return true;
     }

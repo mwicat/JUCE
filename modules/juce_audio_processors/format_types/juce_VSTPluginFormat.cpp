@@ -1180,6 +1180,7 @@ struct VSTPluginInstance     : public AudioPluginInstance,
         desc.lastInfoUpdateTime = Time::getCurrentTime();
         desc.pluginFormatName = "VST";
         desc.category = getCategory();
+        desc.initialDelay = vstEffect->initialDelay;
 
         {
             char buffer[512] = { 0 };
