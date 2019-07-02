@@ -686,7 +686,7 @@ struct ModuleHandle    : public ReferenceCountedObject
 
     void closeEffect (Vst2::AEffect* eff)
     {
-        eff->dispatcher (eff, Vst2::effClose, 0, 0, 0, 0);
+        // eff->dispatcher (eff, Vst2::effClose, 0, 0, 0, 0);
     }
 
    #if JUCE_WINDOWS
@@ -812,7 +812,7 @@ struct ModuleHandle    : public ReferenceCountedObject
 
     void closeEffect (Vst2::AEffect* eff)
     {
-        eff->dispatcher (eff, Vst2::effClose, 0, 0, 0, 0);
+        // eff->dispatcher (eff, Vst2::effClose, 0, 0, 0, 0);
     }
 
   #endif
@@ -1621,8 +1621,8 @@ struct VSTPluginInstance     : public AudioPluginInstance,
             case Vst2::audioMasterGetTime:                  return getVSTTime();
             case Vst2::audioMasterIdle:                     handleIdle(); break;
             case Vst2::audioMasterSizeWindow:               setWindowSize (index, (int) value); return 1;
-            case Vst2::audioMasterUpdateDisplay:            triggerAsyncUpdate(); break;
-            case Vst2::audioMasterIOChanged:                setLatencySamples (vstEffect->initialDelay); break;
+            // case Vst2::audioMasterUpdateDisplay:            triggerAsyncUpdate(); break;
+            // case Vst2::audioMasterIOChanged:                setLatencySamples (vstEffect->initialDelay); break;
             case Vst2::audioMasterNeedIdle:                 startTimer (50); break;
 
             case Vst2::audioMasterGetSampleRate:            return (pointer_sized_int) (getSampleRate() > 0 ? getSampleRate() : defaultVSTSampleRateValue);
